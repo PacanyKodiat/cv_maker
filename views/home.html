@@ -1,0 +1,31 @@
+<div ng-controller="adminCtrl">
+    <div class="page-header">
+        <h1>{{tempnum | currency:"UAH"}} <small>{{test}}</small></h1>
+    </div>
+    <input type="text" ng-model="text"/>
+    <button ng-click="testclick()">aaaa</button>
+    <br/>
+    <input type="text" ng-model="name" />
+    <button ng-click="addnew()">add</button>
+    <h1>Пользователь {{list.user}} количество курсов - {{list.cources.length}}</h1>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Курс</th>
+            <th></th>
+            <th>Пройден</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="cource in list.cources">
+            <td>{{cource.name}}</td>
+            <td><input type="checkbox" ng-model="cource.passed" /></td>
+            <td>
+                    <span style="{{setStyle(cource.passed)}}">
+                        {{showText(cource.passed)}}
+                    </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
