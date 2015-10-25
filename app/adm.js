@@ -1,25 +1,37 @@
 /**
  * Created by stelmakh on 23.10.2015.
  */
-var test = angular.module('myApp', ['ui.router'])
-
-    .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
-
-        $urlRouterProvider.otherwise('/home');
-
-        $stateProvider.state('home', {
-            url: '/home',
-            templateUrl: 'views/home.html'
-        });
-
-        $stateProvider.state('admin', {
-            url: '/admin',
-            templateUrl: 'views/admin.html'
-        });
-    }]);
-test.controller("adminCtrl", function($scope,$http){
-    $scope.test = "HELLO";
-    $scope.tempnum = 145.6;
-});
-
-
+angular.module('myApp', ['ui.router'])
+    .config(function($stateProvider, $urlRouterProvider) {
+        
+        $urlRouterProvider.otherwise('/');
+        
+        $stateProvider
+            .state('home', {
+                url: '/',
+                templateUrl: 'views/home.html'
+            })
+            .state('admin', {
+                url: '/admin',
+                templateUrl: 'views/admin.html'
+            });
+    })
+    .controller('adminCtrl', function($scope,$http){
+        $http.get('data.json')
+            .success(function(response){
+                $scope.myData = response;
+            })
+            .error(function(){
+                alert("json error!");
+            });
+        $scope.test = function(){
+            $scope.yourName = "test";
+        }
+        $scope.toggle = false;
+        $scope.removeble = true;
+    })
+    .directive('editNav', function(){
+        return {
+            templateUrl: 'views/edit-nav.html'
+        }
+    });

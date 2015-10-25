@@ -8,7 +8,6 @@
     font-family: Roboto;
     src: url(fonts/RobotoRegular.ttf);
 }
-
 body {
     background: #181818;
     margin: 0;
@@ -19,7 +18,7 @@ h1, h2{
     margin: 0;
 }
 p, li{
-    font-size: 1em;
+    font-size: 1.1em;
     font-family: Roboto;
 	color: #444;
 }
@@ -43,8 +42,36 @@ header, main, footer{
 .row{
     margin: 0;
 }
-.col-*{
+[class*='col-']{
     padding-left: 0;
+}
+.switch{
+    position: fixed;
+    left: 10%;
+    z-index: 1030;
+    top: 1%;
+}
+.btn-remove{
+    font-size: 14px;
+    cursor: pointer;
+    color: inherit;
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+}
+.btn-save{
+    font-size: 14px;
+    cursor: pointer;
+    color: inherit;
+    position: absolute;
+    right: 40px;
+    bottom: 0;
+}
+.edit-area:hover{
+    background-color: azure;
+}
+.edit-area:hover>*{
+    cursor: pointer;
 }
 /* header */
 
@@ -73,10 +100,10 @@ header>div>ul>li{
     margin-bottom: 3px;
 }
 /* main */
-
 main>section>div>h1{
-    font-size: 1.3em;
+    font-size: 1.4em;
     color: #4a81a6;
+    margin-bottom: 20px;
 }
 main>section{
     border-top: 1px solid #dedede;
@@ -86,10 +113,17 @@ main>section:first-child{
     border-top: 0;
 }
 main>section>div>article{
-    padding-bottom: 20px;    
+    padding-bottom: 20px;
+    position: relative;
 }
 main>section>div>article>h2{
     font-size: 1.2em;
+}
+main>section>div>article>.skill{
+    background-color: #4a81a6;
+    border-radius: 4px;
+    padding: .4em 1em;
+    color: white;
 }
 
 /* footer */
@@ -100,6 +134,6 @@ footer{
     border-top: 1px solid #dedede;
 }
 footer>p{
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: #a8a8a7;
 }

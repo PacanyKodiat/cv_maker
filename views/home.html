@@ -1,32 +1,43 @@
 <div ng-controller="adminCtrl">
+    <div class="switch">
+        <button type="button" class="btn" aria-label="Left Align" ng-click="toggle = fale">
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn" aria-label="Left Align" ng-click="toggle = true">
+            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+        </button>
+    </div>
     <div class="wraper container">
         <header class="row">
             <div class="col-md-2 col-sm-12">
                 <img src="headshot.jpg" alt="Igor Smyrnov">
             </div>
-            <div class="col-md-6 col-sm-12">
-                <h1>Igor Smyrnov</h1>
-                <h2>Front-end developer</h2>
+            <div ng-class="{'edit-area': !toggle}" class="col-md-6 col-sm-12">
+                <h1 contenteditable="{{!toggle}}" ng-model="test">{{myData.name_surname}}</h1>
+                <h2 contenteditable="{{!toggle}}">{{myData.position}}</h2>
+                <edit-nav></edit-nav>
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul>
                     <li>Email: <a href="mailto:smyrnovai@gmail.com">smyrnovai@gmail.com</a></li>
                     <li>Telefon: +48 880-026-310</li>
                 </ul>
+                <edit-nav></edit-nav>
             </div>
         </header>
         <main>
             <section class="row">
-                <div class="col-md-4">
-                    <h1>Wykształcenie</h1>
+                <div class="col-md-3">
+                    <h1>Wykształcenie:</h1>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <article>
                         <h2>WSIU</h2>
                         <p class="years">2012 - aktualnie</p>
                         <ul>
                             <li>Kierunek: Informatyka i zarządzanie</li>
                         </ul>
+                        <edit-nav></edit-nav>
                     </article>  
                     <article>
                         <h2>WSIU</h2>
@@ -34,35 +45,15 @@
                         <ul>
                             <li>Kierunek: Informatyka i zarządzanie</li>
                         </ul>
+                        <edit-nav></edit-nav>
                     </article>                    
                 </div>
             </section>
             <section class="row">
-                <div class="col-md-4">
-                    <h1>Doświadczenie zawodowe</h1>
+                <div class="col-md-3">
+                    <h1>Umiejętności zawodowe:</h1>
                 </div>
-                <div class="col-md-8">
-                    <article>
-                        <h2>WSIU</h2>
-                        <p class="years">2012 - aktualnie</p>                        
-                        <ul>
-                            <li>Kierunek: Informatyka i zarządzanie</li>
-                        </ul>
-                    </article>  
-                    <article>
-                        <h2>WSIU</h2>
-                        <p class="years">2012 - aktualnie</p>                        
-                        <ul>
-                            <li>Kierunek: Informatyka i zarządzanie</li>
-                        </ul>
-                    </article>                    
-                </div>
-            </section>
-            <section class="row">
-                <div class="col-md-4">
-                    <h1>Umiejętności zawodowe</h1>
-                </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <article>
                         <span class="skill">Sass</span>
                         <span class="skill">Sass</span>
@@ -73,23 +64,10 @@
                 </div>
             </section>
             <section class="row">
-                <div class="col-md-4">
-                    <h1>Umiejętności osobiste</h1>
-                </div>
-                <div class="col-md-8">
-                    <article>
-                        <span class="skill">Ambicja</span>
-                        <span class="skill">Ambicja</span>
-                        <span class="skill">Ambicja</span>
-                        <span class="skill">Ambicja</span>
-                    </article>                    
-                </div>
-            </section>
-            <section class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h1>Umiejętności językowe:</h1>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <article>
                         <div class="lang">Polski - biegły</div>
                         <div class="lang">Polski - biegły</div>
@@ -98,10 +76,10 @@
                 </div>
             </section>
             <section class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h1>Zainteresowania:</h1>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <article>
                         <p>W wolnej chwili lubię rysować, uprawiać sport, uczyć się nowych rzeczy ze świata web technologii i zarządzania.</p>
                     </article>                    
