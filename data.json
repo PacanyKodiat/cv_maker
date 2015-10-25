@@ -1,0 +1,16 @@
+{
+    "name_surname": "Igor Smyrnov",
+    "position": "Front-end developer",
+    "contact_data": {
+        "e-mail": "smyrnovai@gmail.com",
+        "phone_num": "+48 880-026-310"
+    },
+    "education": {
+        "name": "WSIU",
+        "date": "2012 - aktualnie",
+        "option": {
+            "option_name": "Kierunek",
+            "option_val": "Informatyka i zarządzanie"
+        }
+    }
+}
