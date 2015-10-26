@@ -9,15 +9,15 @@ angular.module('myApp', ['ui.router'])
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: 'views/home.html'
+                templateUrl: 'app/view/home.html'
             })
             .state('admin', {
                 url: '/admin',
-                templateUrl: 'views/admin.html'
+                templateUrl: 'app/view/admin.html'
             });
     })
     .controller('adminCtrl', function($scope,$http){
-        $http.get('data.json')
+        $http.get('app/model/cv-data.json')
             .success(function(response){
                 $scope.myData = response;
             })
@@ -32,6 +32,6 @@ angular.module('myApp', ['ui.router'])
     })
     .directive('editNav', function(){
         return {
-            templateUrl: 'views/edit-nav.html'
+            templateUrl: 'app/view/edit-nav.html'
         }
     });
