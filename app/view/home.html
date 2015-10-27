@@ -12,17 +12,37 @@
             <div class="col-md-2 col-sm-12">
                 <img src="headshot.jpg" alt="Igor Smyrnov">
             </div>
-            <div ng-class="{'edit-area': !toggle}" class="col-md-6 col-sm-12">
-                <h1 contenteditable="{{!toggle}}" ng-model="test">{{myData.name_surname}}</h1>
-                <h2 contenteditable="{{!toggle}}">{{myData.position}}</h2>
-                <edit-nav></edit-nav>
+            <div class="col-md-6 col-sm-12">
+            <form editable-form name="editableForm" onaftersave="saveUser()">
+                <h1 editable-text="myData.name_surname" e-name="name">{{myData.name_surname || 'empty' }}</h1>
+                <h2 editable-text="myData.position">{{myData.position}}</h2>
+                
+                <div class="buttons">
+                    <!-- button to show form -->
+                    <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                        Edit
+                    </button>
+                                        
+                    <!-- button to show form -->
+                    
+                    <!-- buttons to submit / cancel form -->
+                    <span ng-show="editableForm.$visible">
+                        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                            Save
+                        </button>
+                        
+                        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                            Cancel
+                        </button>
+                    </span>
+                </div>
+            </form>
             </div>
             <div class="col-md-4 col-sm-12">
                 <ul>
                     <li>Email: <a href="mailto:smyrnovai@gmail.com">smyrnovai@gmail.com</a></li>
                     <li>Telefon: +48 880-026-310</li>
                 </ul>
-                <edit-nav></edit-nav>
             </div>
         </header>
         <main>
@@ -37,7 +57,7 @@
                         <ul>
                             <li>Kierunek: Informatyka i zarządzanie</li>
                         </ul>
-                        <edit-nav></edit-nav>
+       
                     </article>  
                     <article>
                         <h2>WSIU</h2>
@@ -45,7 +65,7 @@
                         <ul>
                             <li>Kierunek: Informatyka i zarządzanie</li>
                         </ul>
-                        <edit-nav></edit-nav>
+       
                     </article>                    
                 </div>
             </section>

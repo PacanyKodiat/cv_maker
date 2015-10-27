@@ -5,12 +5,21 @@
         "e-mail": "smyrnovai@gmail.com",
         "phone_num": "+48 880-026-310"
     },
-    "education": {
+    "education": 
+    [{
         "name": "WSIU",
         "date": "2012 - aktualnie",
         "option": {
             "option_name": "Kierunek",
             "option_val": "Informatyka i zarządzanie"
         }
-    }
+    },
+    {
+        "name": "WSIU",
+        "date": "2012 - aktualnie",
+        "option": {
+            "option_name": "Kierunek",
+            "option_val": "Informatyka i zarządzanie"
+        }
+    }]
 }
