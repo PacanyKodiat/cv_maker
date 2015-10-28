@@ -53,6 +53,21 @@ angular.module('myApp', ['ui.router', 'xeditable'])
         $scope.toggle = false;
     
         $scope.removeble = true;
+
+        //sasha code authorization admin
+        $scope.test = "ppc";
+        $scope.auth = function()
+        {
+            $http.post("app/model/admin.php",
+                {
+                    admin:$scope.admin
+                }
+            ).success(function(data){
+                    $scope.admin = data;
+                });
+        };
+        //end auth
+
     })
     .directive('editNav', function(){
         return {
