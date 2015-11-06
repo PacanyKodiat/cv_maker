@@ -16,7 +16,6 @@
             <form editable-form name="editableForm" onaftersave="saveUser()">
                 <h1 editable-text="myData.name_surname" e-name="name">{{myData.name_surname || 'empty' }}</h1>
                 <h2 editable-text="myData.position">{{myData.position}}</h2>
-                
                 <div class="buttons">
                     <!-- button to show form -->
                     <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
