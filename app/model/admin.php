@@ -11,7 +11,7 @@ require_once("db.php");
 class Admin
 {
     private $obj;
-    private $pass;
+    public $pass;
     public $error;
     public $goodauth;
     /*
@@ -30,8 +30,8 @@ class Admin
     public function auth($login,$pass)
     {
         global $db;
-        $pass = md5(md5($pass));
-        $sql = "select * from admins where name='{$login}' and pass ='{$pass}'";
+        $this->pass = md5(md5($pass));
+        $sql = "select * from admins where name='{$login}' and pass ='{$this->pass}'";
         $db->connect();
         if($result = $db->mysqli->query($sql))
         {
@@ -44,6 +44,7 @@ class Admin
             else {
                 $this->obj = $result->fetch_object('admin');
                 $this->obj->goodauth = "вы успешно вошли под именем {$this->obj->name}.";
+                $this->obj->pass = $pass;
             }
         }
         else $this->error = 'Database error: '. $db->mysqli->error;
@@ -54,9 +55,4 @@ class Admin
     }
 
 };
-$admin = new Admin();
-//$admin->registration();
-$postdata = file_get_contents("php://input");
-$data = json_decode($postdata);
-$admin->auth($data->admin->name,$data->admin->pass);
 ?>
