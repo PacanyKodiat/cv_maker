@@ -1,8 +1,8 @@
 /**
  * Created by stelmakh on 23.10.2015.
  */
-angular.module('myApp', ['ui.router', 'xeditable'])
-    .config(function($stateProvider, $urlRouterProvider) {
+var app = angular.module('myApp', ['ui.router', 'xeditable'])
+    app.config(function($stateProvider, $urlRouterProvider) {
         
         $urlRouterProvider.otherwise('/');
         
@@ -16,10 +16,10 @@ angular.module('myApp', ['ui.router', 'xeditable'])
                 templateUrl: 'app/view/admin.html'
             });
     })
-    .run(function(editableOptions){
+    app.run(function(editableOptions){
         editableOptions.theme = 'bs3';
     })
-    .controller('adminCtrl', function($scope,$http){
+    app.controller('adminCtrl', function($scope,$http){
     
         $http.get('app/model/cv-data.json')
             .success(function(response){
@@ -53,9 +53,24 @@ angular.module('myApp', ['ui.router', 'xeditable'])
         $scope.toggle = false;
     
         $scope.removeble = true;
+
+
+
     })
-    .directive('editNav', function(){
+    app.directive('editNav', function(){
         return {
             templateUrl: 'app/view/edit-nav.html'
         }
     });
+
+    //sasha code authorization admin
+    app.controller('admauthCtrl', ['$scope','authService', function ($scope,authService) {
+        $scope.admin = {name:"",pass:"",error:""};
+        authService.isauth();
+        $scope.auth=function(data){
+            authService.auth($scope.admin);
+        };
+
+    }]);
+    //end auth
+

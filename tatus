@@ -1,0 +1,78 @@
+[33mcommit 72c9efd667a100aa4a84f787cf26241429c8aa78[m
+Author: StelmakhAleksandr <stelmahwork@gmail.com>
+Date:   Wed Oct 28 10:12:11 2015 +0200
+
+    rename app/model/auth.php to app/model/admin.php
+
+[33mcommit 538c677bed6c3d04c2c3536b6171a169a801a469[m
+Author: StelmakhAleksandr <stelmahwork@gmail.com>
+Date:   Wed Oct 28 10:10:48 2015 +0200
+
+    add authorization without session or cookie
+
+[33mcommit de414d3cf1a29b8636c89814793dbb572de66cc0[m
+Author: Igor Smyrnov <smyrnovai@gmail.com>
+Date:   Tue Oct 27 22:21:42 2015 +0100
+
+    added angular-xeditable component
+
+[33mcommit 8fd92b926909b5c62da0364944d2486a47814947[m
+Author: Igor Smyrnov <smyrnovai@gmail.com>
+Date:   Mon Oct 26 04:24:22 2015 +0100
+
+    Changed structure of project
+
+[33mcommit 6be137bbc94e520e59687c68e92b70ea21c5dbb9[m
+Author: Igor Smyrnov <smyrnovai@gmail.com>
+Date:   Sun Oct 25 23:21:20 2015 +0100
+
+    Updated views and added new directive
+
+[33mcommit 0b075c6d1d0ed5ae0d99dee2ad696bef5a9b92f6[m
+Author: Igor Smyrnov <smyrnovai@gmail.com>
+Date:   Sun Oct 25 23:19:38 2015 +0100
+
+    Updated views and added new directive
+
+[33mcommit 2c9410e41a17050fd449e44b4109a2a8c01bc609[m
+Author: Igor Smyrnov <smyrnovai@gmail.com>
+Date:   Sat Oct 24 16:50:03 2015 +0200
+
+    forgot about including AngularJS in index.html
+
+[33mcommit 23cf3d2b8e768444aed51b8c949445e656eeed2a[m
+Author: Igor Smyrnov <smyrnovai@gmail.com>
+Date:   Sat Oct 24 16:39:52 2015 +0200
+
+    install components from bower
+
+[33mcommit d45eaa63fd0c8a6aa55ffe348357f33fa58dc5c4[m
+Merge: 23f3c71 1257da5
+Author: Igor Smyrnov <smyrnovai@gmail.com>
+Date:   Sat Oct 24 03:39:06 2015 +0200
+
+    Adding layout's and styles
+
+[33mcommit 1257da515501d4422dde191917090ef076dcb96b[m
+Author: StelmakhAleksandr <stelmahwork@gmail.com>
+Date:   Fri Oct 23 23:28:49 2015 +0300
+
+    first structure project
+
+[33mcommit 23f3c71d0422d959f59b28a9990cf443c47c1d00[m
+Author: Igor Smyrnov <smyrnovai@gmail.com>
+Date:   Fri Oct 23 20:53:11 2015 +0200
+
+    basic sources
+
+[33mcommit f003712905321f502ae1f1410295203627605a4f[m
+Author: StelmakhAleksandr <stelmahwork@gmail.com>
+Date:   Wed Oct 21 19:24:41 2015 +0300
+
+    add sql file
+
+[33mcommit 4f34695cf5d2f36506909ffb1e11ef3587b37881[m
+Author: Igor Smyrnov <smyrnovai@gmail.com>
+Date:   Tue Oct 20 21:50:03 2015 +0200
+
+    Add readme
