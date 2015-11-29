@@ -19,7 +19,7 @@ var app = angular.module('myApp', ['ui.router', 'xeditable'])
     app.run(function(editableOptions){
         editableOptions.theme = 'bs3';
     })
-    app.controller('adminCtrl', function($scope,$http){
+    app.controller('adminCtrl', ['$scope','authService', '$http', function($scope, authService, $http){
     
         $http.get('app/model/cv-data.json')
             .success(function(response){
@@ -29,39 +29,17 @@ var app = angular.module('myApp', ['ui.router', 'xeditable'])
                 alert("json error!");
             });
     
-            $scope.cvData = {
-                "name_surname": "Igor Smyrnov",
-                "position": "Front-end developer"
-            };
-    
-            $scope.saveUser = function() {
-                // $scope.user already updated!
-                return $http.post('app/model/cv-data.json', $scope.cvData).error(function(err) {
-                if(err.field && err.msg) {
-                    // err like {field: "name", msg: "Server-side error for this username!"} 
-                    $scope.editableForm.$setError(err.field, err.msg);
-                } else { 
-                    // unknown error
-                        $scope.editableForm.$setError('name', 'Unknown error!');
-                    }
-                });
-            };
-            $scope.saveUser = function() {
-                
-            };
-    
-        $scope.toggle = false;
-    
-        $scope.removeble = true;
-
-
-
-    })
-    app.directive('editNav', function(){
-        return {
-            templateUrl: 'app/view/edit-nav.html'
-        }
-    });
+		$scope.saveUser = function() {
+			//$http.put('app/model/cv-data.json')
+		};
+		$scope.eyeSwitch = authService.isauth();
+		$scope.toggle = authService.isauth();
+    }]);
+//    app.directive('editNav', function(){
+//        return {
+//            templateUrl: 'app/view/edit-nav.html'
+//        }
+//    });
 
     //sasha code authorization admin
     app.controller('admauthCtrl', ['$scope','authService', function ($scope,authService) {

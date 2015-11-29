@@ -1,5 +1,5 @@
 <div ng-controller="adminCtrl">
-    <div class="switch">
+    <div class="switch" ng-show="eyeSwitch">
         <button type="button" class="btn" aria-label="Left Align" ng-click="toggle = false">
             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
         </button>
@@ -10,27 +10,25 @@
     <div class="wraper container">
         <header class="row">
             <div class="col-md-2 col-sm-12">
-                <img src="headshot.jpg" alt="Igor Smyrnov">
+                <img src="styles/img/headshot.jpg" alt="Igor Smyrnov">
             </div>
             <div class="col-md-6 col-sm-12">
-            <form editable-form name="editableForm" onaftersave="saveUser()">
+            <form editable-form name="nameSurnamePosition" onaftersave="saveUser()">
                 <h1 editable-text="myData.name_surname" e-name="name">{{myData.name_surname || 'empty' }}</h1>
-                <h2 editable-text="myData.position">{{myData.position}}</h2>
+                <h2 editable-text="myData.position">{{myData.position || 'empty'}}</h2>
                 <div class="buttons">
                     <!-- button to show form -->
-                    <button type="button" class="btn btn-default" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                    <button type="button" class="btn btn-default" ng-click="nameSurnamePosition.$show()" ng-show="!nameSurnamePosition.$visible && toggle">
                         Edit
                     </button>
                                         
-                    <!-- button to show form -->
-                    
                     <!-- buttons to submit / cancel form -->
-                    <span ng-show="editableForm.$visible">
-                        <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">
+                    <span ng-show="nameSurnamePosition.$visible">
+                        <button type="submit" class="btn btn-primary" ng-disabled="nameSurnamePosition.$waiting">
                             Save
                         </button>
                         
-                        <button type="button" class="btn btn-default" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                        <button type="button" class="btn btn-default" ng-disabled="nameSurnamePosition.$waiting" ng-click="nameSurnamePosition.$cancel()">
                             Cancel
                         </button>
                     </span>
@@ -38,10 +36,33 @@
             </form>
             </div>
             <div class="col-md-4 col-sm-12">
-                <ul>
-                    <li>Email: <a href="mailto:smyrnovai@gmail.com">smyrnovai@gmail.com</a></li>
-                    <li>Telefon: +48 880-026-310</li>
-                </ul>
+				<form editable-form name="contactData" onaftersave="saveUser()">
+					<ul>
+						<li>Email: 
+							<a editable-text="smyrnovai@gmail.com" href="mailto:smyrnovai@gmail.com">smyrnovai@gmail.com</a>
+						</li>
+						<li>Telefon: 
+							<span editable-text="+48 880-026-310">+48 880-026-310</span>
+						</li>
+					</ul>
+					<div class="buttons">
+						<!-- button to show form -->
+						<button type="button" class="btn btn-default" ng-click="contactData.$show()" ng-show="!contactData.$visible && toggle">
+							Edit
+						</button>
+
+						<!-- buttons to submit / cancel form -->
+						<span ng-show="contactData.$visible">
+							<button type="submit" class="btn btn-primary" ng-disabled="contactData.$waiting">
+								Save
+							</button>
+
+							<button type="button" class="btn btn-default" ng-disabled="contactData.$waiting" ng-click="contactData.$cancel()">
+								Cancel
+							</button>
+						</span>
+                	</div>
+				</form>
             </div>
         </header>
         <main>

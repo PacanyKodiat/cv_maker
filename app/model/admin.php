@@ -18,7 +18,7 @@ class Admin
     public function registration()
     {
         global $db;
-        $admin = "igor";
+        $admin = "Igor";
         $pass = md5(md5("qwerty"));
         $sql = "Insert into admins(name,pass) values('{$admin}','{$pass}')";
         $db->connect();

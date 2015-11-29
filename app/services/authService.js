@@ -18,17 +18,18 @@ app.factory('authService',function($http, $location, sessionService){
                         sessionService.set('id',msg.id);
                         sessionService.set('name',msg.name);
                         sessionService.set('pass',msg.pass);
-                       //$location.path('/home');
+                       	$location.path('/home');
                     }else{
                         data.error = msg.error;
                     }
             });
         },
         isauth:function(){
-            alert(sessionService.get('id'));
-            console.log(sessionService.get('id'));
-            console.log(sessionService.get('name'));
-            console.log(sessionService.get('pass'));
+//            alert(sessionService.get('id'));
+			return true;
+//            console.log(sessionService.get('id'));
+//            console.log(sessionService.get('name'));
+//            console.log(sessionService.get('pass'));
         },
         logout:function(){
             sessionService.destroy('id');
