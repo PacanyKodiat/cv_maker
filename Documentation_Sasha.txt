@@ -1,0 +1,14 @@
+Get JSON with all information (categories and all from categories):
+    'app/model/controller.php'  with key 'getdata' or 'app/model/controller.php?getdata'
+    for example:
+         $http.post("app/model/controller.php",{getall:true})
+            OR
+         $http.post("app/model/controller.php?getdata")
+         In html
+            <div ng-repeat="cat in TestData">
+                   <p>{{cat.name}}</p>
+                    <div ng-repeat="field in cat.fields">
+                        <p>{{field.key}} {{field.value}}</p>
+                    </div>
+            </div>
+
