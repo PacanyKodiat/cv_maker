@@ -6,14 +6,21 @@ var app = angular.module('myApp', ['ui.router', 'xeditable'])
         
         $urlRouterProvider.otherwise('/');
         
-        $stateProvider
-            .state('home', {
+        $stateProvider			
+            .state('test', {
                 url: '/',
-                templateUrl: 'app/view/home.html'
+                templateUrl: 'app/view/test.html',
+				controller: 'adminCtrl'
+            })
+            .state('home', {
+                url: '/home',
+                templateUrl: 'app/view/home.html',
+				controller: 'adminCtrl'
             })
             .state('admin', {
                 url: '/admin',
-                templateUrl: 'app/view/admin.html'
+                templateUrl: 'app/view/admin.html',
+				controller: 'authCtrl'
             });
     })
     app.run(function(editableOptions){
@@ -29,9 +36,11 @@ var app = angular.module('myApp', ['ui.router', 'xeditable'])
                 alert("json error!");
             });
     
-		$scope.saveUser = function() {
-			//$http.put('app/model/cv-data.json')
+		$scope.updateData = function() {
+			alert($scope.myData.name_surname);
+			$http.put('app/model/cv-data.json', $scope.myData)
 		};
+		
 		$scope.eyeSwitch = authService.isauth();
 		$scope.toggle = authService.isauth();
     }]);
@@ -42,7 +51,7 @@ var app = angular.module('myApp', ['ui.router', 'xeditable'])
 //    });
 
     //sasha code authorization admin
-    app.controller('admauthCtrl', ['$scope','authService', function ($scope,authService) {
+    app.controller('authCtrl', ['$scope','authService', function ($scope,authService) {
         $scope.admin = {name:"",pass:"",error:""};
         authService.isauth();
         $scope.auth=function(data){
