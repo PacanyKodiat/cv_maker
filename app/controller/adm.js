@@ -19,17 +19,18 @@ var app = angular.module('myApp', ['ui.router', 'xeditable'])
     app.run(function(editableOptions){
         editableOptions.theme = 'bs3';
     })
-    app.controller('adminCtrl', ['$scope','authService', '$http', function($scope, authService, $http){
-    
-        $http.get('app/model/cv-data.json')
-            .success(function(response){
-                $scope.myData = response;
-            })
-            .error(function(){
-                alert("json error!");
-            });
-    
+    app.controller('home', ['$http','$scope','authService', 'getDataService', 'setDataService', function($http, $scope, authService, getDataService, setDataService){
+        $scope.myData = getDataService.data;
+
+        $scope.newCat = {};
+        $scope.addCategory = function(){
+            $scope.myData.push($scope.newCat);
+            setDataService.insert($scope.newCat,'addCat');
+            $scope.newCat = {};
+        };
+
 		$scope.saveUser = function() {
+            alert("assadasda");
 			//$http.put('app/model/cv-data.json')
 		};
 		$scope.eyeSwitch = authService.isauth();
@@ -42,13 +43,12 @@ var app = angular.module('myApp', ['ui.router', 'xeditable'])
 //    });
 
     //sasha code authorization admin
-    app.controller('admauthCtrl', ['$scope','authService', function ($scope,authService) {
+    app.controller('admauthCtrl', ['$scope','authService', function ($scope,authService){
         $scope.admin = {name:"",pass:"",error:""};
         authService.isauth();
         $scope.auth=function(data){
             authService.auth($scope.admin);
         };
-
     }]);
     //end auth
 

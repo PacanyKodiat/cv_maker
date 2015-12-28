@@ -29,16 +29,12 @@ class Admin
 
     public function auth($login,$pass)
     {
-        global $db;
+        $db = Db::getDb();
         $this->pass = md5(md5($pass));
         $sql = "select * from admins where name='{$login}' and pass ='{$this->pass}'";
         $db->connect();
         if($result = $db->mysqli->query($sql))
         {
-            /*while ($row = $result->fetch_object('admin'))
-            {
-                $this->obj = $row;
-            }*/
             if($result->num_rows==0)
                 $this->error.="логин или пароль гавно";
             else {

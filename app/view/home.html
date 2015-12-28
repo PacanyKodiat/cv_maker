@@ -1,4 +1,4 @@
-<div ng-controller="adminCtrl">
+<div ng-controller="home">
     <div class="switch" ng-show="eyeSwitch">
         <button type="button" class="btn" aria-label="Left Align" ng-click="toggle = false">
             <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
@@ -15,7 +15,7 @@
             <div class="col-md-6 col-sm-12">
             <form editable-form name="nameSurnamePosition" onaftersave="saveUser()">
                 <h1 editable-text="myData.name_surname" e-name="name">{{myData.name_surname || 'empty' }}</h1>
-                <h2 editable-text="myData.position">{{myData.position || 'empty'}}</h2>
+                <h2 editable-text="myData.position"></h2>
                 <div class="buttons">
                     <!-- button to show form -->
                     <button type="button" class="btn btn-default" ng-click="nameSurnamePosition.$show()" ng-show="!nameSurnamePosition.$visible && toggle">
@@ -65,64 +65,32 @@
 				</form>
             </div>
         </header>
-        <main>
+        <form editable-form name="addCat" onaftersave="addCategory()">
+            <button type="button" class="btn btn-default" ng-click="addCat.$show()" ng-show="!addCat.$visible && toggle">
+                Add Category
+            </button>
+             <span ng-show="addCat.$visible">
+                 <input name="nameCat" ng-model="newCat.name" type="text" placeholder="name"/>
+                 <button type="submit" id="submit" class="btn btn-primary" ng-disabled="addCat.$waiting">
+                     Add
+                 </button>
+
+                 <button type="button" class="btn btn-default" ng-disabled="addCat.$waiting" ng-click="addCat.$cancel()">
+                     Cancel
+                 </button>
+             </span>
+        </form>
+        <main ng-repeat="section in myData">
             <section class="row">
                 <div class="col-md-3">
-                    <h1>Wykształcenie:</h1>
+                    <h1>{{section.name}}:</h1>
                 </div>
                 <div class="col-md-9">
-                    <article>
-                        <h2>WSIU</h2>
-                        <p class="years">2012 - aktualnie</p>
-                        <ul>
-                            <li>Kierunek: Informatyka i zarządzanie</li>
-                        </ul>
-       
-                    </article>  
-                    <article>
-                        <h2>WSIU</h2>
-                        <p class="years">2012 - aktualnie</p>                        
-                        <ul>
-                            <li>Kierunek: Informatyka i zarządzanie</li>
-                        </ul>
-       
-                    </article>                    
-                </div>
-            </section>
-            <section class="row">
-                <div class="col-md-3">
-                    <h1>Umiejętności zawodowe:</h1>
-                </div>
-                <div class="col-md-9">
-                    <article>
-                        <span class="skill">Sass</span>
-                        <span class="skill">Sass</span>
-                        <span class="skill">Sass</span>
-                        <span class="skill">Sass</span>
-                        <span class="skill">Sass</span>
-                    </article>                    
-                </div>
-            </section>
-            <section class="row">
-                <div class="col-md-3">
-                    <h1>Umiejętności językowe:</h1>
-                </div>
-                <div class="col-md-9">
-                    <article>
-                        <div class="lang">Polski - biegły</div>
-                        <div class="lang">Polski - biegły</div>
-                        <div class="lang">Polski - biegły</div>
-                    </article>                    
-                </div>
-            </section>
-            <section class="row">
-                <div class="col-md-3">
-                    <h1>Zainteresowania:</h1>
-                </div>
-                <div class="col-md-9">
-                    <article>
-                        <p>W wolnej chwili lubię rysować, uprawiać sport, uczyć się nowych rzeczy ze świata web technologii i zarządzania.</p>
-                    </article>                    
+                    <article ng-repeat="records in section.records">
+                        <div ng-repeat="fields in records.fields">
+                            <span>{{fields.value}}</span>
+                        </div>
+                    </article>
                 </div>
             </section>
         </main>
