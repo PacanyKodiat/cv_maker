@@ -13,9 +13,10 @@
                 <img src="styles/img/headshot.jpg" alt="Igor Smyrnov">
             </div>
             <div class="col-md-6 col-sm-12">
+
             <form editable-form name="nameSurnamePosition" onaftersave="saveUser()">
-                <h1 editable-text="myData.name_surname" e-name="name">{{myData.name_surname || 'empty' }}</h1>
-                <h2 editable-text="myData.position"></h2>
+                <h1 editable-text="personal.personalData.name" e-name="name">{{personal.personalData.name}}</h1>
+                <h2 editable-text="personal.personalData.position">{{personal.personalData.position}}</h2>
                 <div class="buttons">
                     <!-- button to show form -->
                     <button type="button" class="btn btn-default" ng-click="nameSurnamePosition.$show()" ng-show="!nameSurnamePosition.$visible && toggle">
@@ -39,10 +40,10 @@
 				<form editable-form name="contactData" onaftersave="saveUser()">
 					<ul>
 						<li>Email: 
-							<a editable-text="smyrnovai@gmail.com" href="mailto:smyrnovai@gmail.com">smyrnovai@gmail.com</a>
+							<a editable-text="personal.personalData.email" href="mailto:{{personal.personalData.email}}">{{personal.personalData.email}}</a>
 						</li>
 						<li>Telefon: 
-							<span editable-text="+48 880-026-310">+48 880-026-310</span>
+							<span editable-text="personal.personalData.phonenumber">{{personal.personalData.phonenumber}}</span>
 						</li>
 					</ul>
 					<div class="buttons">
@@ -80,16 +81,26 @@
                  </button>
              </span>
         </form>
-        <main ng-repeat="section in myData">
+        <main ng-repeat="section in sections">
             <section class="row">
                 <div class="col-md-3">
                     <h1>{{section.name}}:</h1>
                 </div>
                 <div class="col-md-9">
-                    <article ng-repeat="records in section.records">
+                    <article ng-repeat="records in section.records" ng-if="section.type==1">
                         <div ng-repeat="fields in records.fields">
-                            <span>{{fields.value}}</span>
+                            <span class="cat-{{fields.type}}">{{fields.value}}</span>
                         </div>
+                    </article>
+
+                    <article ng-if="section.type==2">
+                         <span ng-repeat="records in section.records">
+                             <span class="skill" ng-repeat="fields in records.fields">{{fields.value}}</span>
+                         </span>
+                    </article>
+
+                    <article ng-if="section.type==3">
+                             <p ng-repeat="fields in section.records[0].fields">{{fields.value}}</p>
                     </article>
                 </div>
             </section>

@@ -31,7 +31,7 @@ class Admin
     {
         $db = Db::getDb();
         $this->pass = md5(md5($pass));
-        $sql = "select * from admins where name='{$login}' and pass ='{$this->pass}'";
+        $sql = "select * from personaldata where name='{$login}' and pass ='{$this->pass}'";
         $db->connect();
         if($result = $db->mysqli->query($sql))
         {

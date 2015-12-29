@@ -4,16 +4,23 @@
 'use strict';
 
 app.factory('getDataService',['$http', function ($http) {
-    var myData = [];
-
+    var sectionsData = [];
+    var personalData;
+    var self=this;
     $http.post("app/model/controller.php",{getdata:true}).success(function(data, status, headers, config){
-        data.forEach(function(cat){
-            myData.push(cat);
+        self.personalData = data.personaldata;
+        /*data.personaldata.forEach(function(test){
+            personalData.push(test);
+        });*/
+        data.sections.forEach(function(cat){
+            sectionsData.push(cat);
+
         });
     });
-
+    console.log(self);
     return{
-        data:myData
+        personal:self,
+        sections:sectionsData
     }
 
 }]);

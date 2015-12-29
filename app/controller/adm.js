@@ -20,17 +20,20 @@ var app = angular.module('myApp', ['ui.router', 'xeditable'])
         editableOptions.theme = 'bs3';
     })
     app.controller('home', ['$http','$scope','authService', 'getDataService', 'setDataService', function($http, $scope, authService, getDataService, setDataService){
-        $scope.myData = getDataService.data;
+        $scope.sections = getDataService.sections;
+        $scope.personal = getDataService.personal;
+        console.log($scope.sections);
 
         $scope.newCat = {};
         $scope.addCategory = function(){
             $scope.myData.push($scope.newCat);
             setDataService.insert($scope.newCat,'addCat');
             $scope.newCat = {};
+            console.log($scope.myData);
         };
 
 		$scope.saveUser = function() {
-            alert("assadasda");
+            console.log($scope.personal.personalData);
 			//$http.put('app/model/cv-data.json')
 		};
 		$scope.eyeSwitch = authService.isauth();

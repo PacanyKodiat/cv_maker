@@ -10,9 +10,11 @@ class Field
 {
     public $key;
     public $value;
-    public function __construct($key)
+    public $type;
+    public function __construct($key,$type)
     {
         $this->key = $key;
+        $this->type = $type;
     }
 }
 

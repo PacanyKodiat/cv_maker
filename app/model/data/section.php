@@ -10,6 +10,7 @@ class Section
 {
     public $id;
     public $name;
+    public $type;
     public $records;
     public function __construct()
     {

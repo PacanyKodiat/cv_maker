@@ -119,7 +119,7 @@ main>section>div>article{
 main>section>div>article>h2{
     font-size: 1.2em;
 }
-main>section>div>article>.skill{
+.skill{
     background-color: #4a81a6;
     border-radius: 4px;
     padding: .4em 1em;
